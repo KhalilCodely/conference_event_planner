@@ -1,121 +1,136 @@
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+body {
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+}
+
+/* ------------------------------------------------
+  HERO SECTION (first_page)
+------------------------------------------------- */
 .first_page {
+  position: relative;
   display: flex;
   height: 100vh;
+  padding: 20px;
   background-image: url("https://cdn.pixabay.com/photo/2018/07/05/14/45/conference-3518465_1280.jpg");
   background-size: cover;
   background-position: center;
   justify-content: center;
   align-items: center;
   color: white;
-  overflow: hidden; 
-  background-color: rgb(185, 186, 187);
-  /* position: relative; */
 }
 
 .first_page::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  backdrop-filter: blur(10px);
+  inset: 0;
+  backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.45);
 }
 
-.first_page h1 {
+/* Content container */
+.first_page_name_btn {
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  width: min(90%, 550px);
+  text-align: center;
+  padding: 20px;
 }
 
+.first_page_name_btn h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.first_page_name_btn p {
+  font-size: clamp(1rem, 2.5vw, 1.6rem);
+  opacity: 0.9;
+}
+
+/* BUTTONS */
 .get-started-btn {
-  background-color:#EFC16B;
-  /* color: white; */
+  background-color: #efc16b;
   color: black;
   border: none;
-  padding: 20px 40px;
-  font-size: 19px;
-  border-radius: 5px;
+  padding: 15px 38px;
+  font-size: 20px;
+  border-radius: 8px;
   cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
 }
 
 .get-started-btn:hover {
   background-color: #c1974a;
+  transform: translateY(-3px);
 }
 
 .getstarted_btn {
-  text-align: center;
   font-size: 30px;
+  text-align: center;
 }
 
+/* ------------------------------------------------
+  MAIN EVENT SECTION
+------------------------------------------------- */
 .main_event {
   display: flex;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px 20px;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(7px);
-  gap: 100px;
+  gap: 80px;
   background-color: rgba(51, 61, 80, 0.7);
+  backdrop-filter: blur(8px);
+  flex-wrap: wrap;
 }
 
 .aboutus_main {
-  width: 800px;
+  width: min(800px, 95%);
   color: white;
-  /* background-color: rgba(0,0,0,0.1); */
-
 }
 
 .aboutus_container {
-  font-size: 20px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 25px;
+  font-size: 20px;
   text-align: justify;
 }
 
 .aboutus_container p {
-  font-size: 23px;
+  font-size: 22px;
   font-weight: 700;
-  
-
 }
 
-.first_page_name_btn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-  width: 500px;
-}
-
-.first_page_name_btn h1 {
-  font-size: 45px;
-  text-align: center;
-}
-
-.first_page_name_btn p {
-  font-size: 26px;
-}
-
+/* ------------------------------------------------
+  SLIDING EVENT LIST
+------------------------------------------------- */
 .event-list-container {
-  position: absolute;
+  position: fixed;
   overflow-x: hidden;
   top: 100vh;
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: rgba(255, 255, 255, 0.8);
-  transition: top 0.5s ease;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+  transition: top 0.6s ease;
   overflow-y: auto;
-  z-index: 2;
-  backdrop-filter: blur(5px);
+  z-index: 20;
 }
 
 .event-list-container.visible {
@@ -123,9 +138,59 @@
 }
 
 .budget_heading {
-  font-size: 40px;
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
+  font-weight: 700;
 }
 
 .budget_sentence {
-  font-size: 29px;
+  font-size: clamp(1.1rem, 3vw, 1.8rem);
+  line-height: 1.4;
+}
+
+/* ------------------------------------------------
+  RESPONSIVE BREAKPOINTS
+------------------------------------------------- */
+
+/* Tablets */
+@media (max-width: 992px) {
+  .main_event {
+    gap: 40px;
+  }
+
+  .aboutus_main {
+    text-align: center;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .first_page {
+    padding: 10px;
+  }
+
+  .get-started-btn {
+    padding: 12px 30px;
+    font-size: 18px;
+  }
+
+  .main_event {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    gap: 30px;
+  }
+
+  .aboutus_container {
+    font-size: 18px;
+  }
+}
+.footer {
+  text-align: center;
+  padding: 15px;
+  background-color: #250b6e;
+  color: #fff;
+  font-size: 14px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
 }

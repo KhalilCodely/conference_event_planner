@@ -32,6 +32,7 @@ function App() {
       <div className={`event-list-container ${showVenue ? 'visible' : ''}`}>
         <ConferenceEvent />
       </div>
+     
     </>
   );
 }
