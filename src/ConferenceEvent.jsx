@@ -13,6 +13,13 @@ const ConferenceEvent = () => {
     const mealsItems = useSelector((state) => state.meals);
     const dispatch = useDispatch();
     const remainingAuditoriumQuantity = 3 - venueItems.find(item => item.name === "Auditorium Hall (Capacity:200)").quantity;
+    
+    const [darkMode, setDarkMode] = useState(false);
+
+// Scroll to top
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
 
     
     const handleToggleItems = () => {
@@ -166,6 +173,7 @@ const mealsTotalCost = calculateTotalCost("meals");
                     </button>
                 </div>
             </navbar>
+            
             <div className="main_container">
                 {!showItems
                     ?
